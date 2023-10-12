@@ -8,4 +8,6 @@ public partial class Class
     public int ClassId { get; set; }
 
     public string Title { get; set; } = null!;
+
+    public string? InchargePerson { get; set; }
 }

@@ -1,0 +1,18 @@
+﻿
+// windows authentication
+Scaffold-DbContext -Connection "Data Source=MICROCARE\MSSQLSERVER01;Initial Catalog=HotelBooking;Trusted_Connection=True;TrustServerCertificate=True;" -Provider Microsoft.EntityFrameworkCore.SqlServer -OutputDir Entities -context BookingDBContext
+
+
+// SQL SERVER AUTHENTICATION
+Scaffold-DbContext -Connection "Data Source=MICROCARE\MSSQL2019;Initial Catalog=HotelBooking;User ID=sa;password=sa@2019;TrustServerCertificate=True;" -Provider Microsoft.EntityFrameworkCore.SqlServer -OutputDir Entities -context BookingDBContext -Project Entities
+
+
+
+// while updating we need to -force at end of each script
+-force
+
+
+//MICROCARE\MSSQLSERVER01 : Server Name
+//HotelBooking : Database Name
+// Entities : the directory(folder) inside project where we want to generate entity & context classes
+// BookingDBContext: this is the name of the Context class to generate

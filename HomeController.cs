@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SchoolDummy.Entities;
+using SchoolDummy.Models;
+using System.Runtime.InteropServices;
 
 namespace SchoolDummy
 {
@@ -7,16 +9,26 @@ namespace SchoolDummy
     {
         public IActionResult Dashboard()
         {
-            //it opens the channel towards the database
+            var dashboardModel = new DashboardModel();
+
             var dbContext = new SchoolDBContext();
 
-            //EF generate SQL query
-            //select * from Students
-            //data from DB will be transformed to List of Objects of Type Student Class
-            IList<Student> students = dbContext.Students.ToList();
+            var teachers = dbContext.Teachers.ToList();
+            dashboardModel.Teachers = teachers;
+            dashboardModel.TotalTeachers = teachers.Count;
 
-            //return View("Dashboard",students);
-            return View(students);
+            //dashboardModel.Teachers = dbContext.Teachers.ToList();
+            //dashboardModel.TotalTeachers = dashboardModel.Teachers.Count;
+
+            var classes = dbContext.Classes.ToList();
+            dashboardModel.Classes = classes;
+            dashboardModel.TotalClasses = classes.Count;
+
+
+            dashboardModel.TotalStudents = dbContext.Students.Count();
+
+
+            return View(dashboardModel);
 
         }
     }

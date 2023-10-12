@@ -24,7 +24,7 @@ app.MapRazorPages();
 
 app.MapControllerRoute(
    name: "default",
-   pattern: "{controller=Student}/{action=StudentsList}/{id?}"
+   pattern: "{controller=Home}/{action=Dashboard}/{id?}"
 );
 
 app.Run();

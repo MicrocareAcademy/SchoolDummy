@@ -19,6 +19,8 @@ public partial class SchoolDBContext : DbContext
 
     public virtual DbSet<Student> Students { get; set; }
 
+    public virtual DbSet<Teacher> Teachers { get; set; }
+
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
         => optionsBuilder.UseSqlServer("Data Source=SAJJADKHAN;Initial Catalog=SchoolDB;Trusted_Connection=True;TrustServerCertificate=True;");
@@ -32,6 +34,7 @@ public partial class SchoolDBContext : DbContext
             entity.ToTable("Class");
 
             entity.Property(e => e.ClassId).HasColumnName("ClassID");
+            entity.Property(e => e.InchargePerson).HasMaxLength(200);
             entity.Property(e => e.Title).HasMaxLength(200);
         });
 
@@ -48,6 +51,18 @@ public partial class SchoolDBContext : DbContext
             entity.Property(e => e.FullName).HasMaxLength(200);
             entity.Property(e => e.MobileNo).HasMaxLength(20);
             entity.Property(e => e.RollNo).HasMaxLength(10);
+        });
+
+        modelBuilder.Entity<Teacher>(entity =>
+        {
+            entity.HasKey(e => e.TeacherId).HasName("PK__Teacher__EDF259445E40D887");
+
+            entity.ToTable("Teacher");
+
+            entity.Property(e => e.TeacherId).HasColumnName("TeacherID");
+            entity.Property(e => e.MobileNo).HasMaxLength(20);
+            entity.Property(e => e.Name).HasMaxLength(200);
+            entity.Property(e => e.Qualification).HasMaxLength(200);
         });
 
         OnModelCreatingPartial(modelBuilder);

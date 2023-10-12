@@ -1,40 +1,71 @@
-﻿@using SchoolDummy.Entities
-
-@model IList<Student>
-
+﻿@model SchoolDummy.Models.DashboardModel
 
 @{
     Layout = "_Layout";
 }
 
+<h2>My School Dashboard</h2>
 
+<div class="row">
+  <div class="col-6">
+      <p>No Of Teachers: @Model.TotalTeachers</p>
+        <p>No Of Students: @Model.TotalStudents</p>
+        <p>No Of Classes: @Model.TotalClasses</p>
+  </div>
+  <div class="col-6">
 
+  </div>
+</div>
+<div class="row" style="margin-top:20px;">
+    <div class="col-6">
+        @if(Model.Classes != null && Model.Classes.Count > 0)
+        {
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Class Name</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var classRoom in Model.Classes)
+                    {
+                        <tr>
+                            <td>@classRoom.Title</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <h2>No Classes ..</h2>
+        }
+    </div>
+    <div class="col-6">
+        @if (Model.Teachers != null && Model.Teachers.Count > 0)
+        {
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Techer Name</th>
+                        <th>Qualification</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var teacher in Model.Teachers)
+                    {
+                        <tr>
+                            <td>@teacher.Name</td>
+                            <td>@teacher.Qualification</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <h2>No Teachers ..</h2>
+        }
+    </div>
+</div>
 
-
-<h1> Students</h1>
-
-@if(Model != null && Model.Count > 0)
-{
-    <table class="table table-condensed">
-        <thead>
-            <tr>
-                <th>Student Name</th>
-                <th>Roll No</th>
-            </tr>
-        </thead>
-        <tbody>
-    @foreach(var student in Model)
-    {
-        <tr>
-            <td>@student.FullName</td>
-            <td>@student.RollNo</td>
-        </tr>
-    }
-       
-         </tbody>
-    </table>
-}
-else
-{
-    <h4>No Students..</h4>
-}
