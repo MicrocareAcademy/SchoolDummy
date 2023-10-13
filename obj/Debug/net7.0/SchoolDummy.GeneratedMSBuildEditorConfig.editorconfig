@@ -36,6 +36,18 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxEYXNoYm9hcmQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/AcademyWork/Academy-Internships/SchoolDummy/Views/Home/_Classes.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxfQ2xhc3Nlcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/AcademyWork/Academy-Internships/SchoolDummy/Views/Home/_Counters.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxfQ291bnRlcnMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/AcademyWork/Academy-Internships/SchoolDummy/Views/Home/_Teachers.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxfVGVhY2hlcnMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/AcademyWork/Academy-Internships/SchoolDummy/Views/Student/StudentsList.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3R1ZGVudFxTdHVkZW50c0xpc3QuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 

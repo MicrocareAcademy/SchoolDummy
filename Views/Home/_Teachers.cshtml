@@ -1,0 +1,26 @@
+﻿@model IList<SchoolDummy.Entities.Teacher>
+
+@if (Model != null && Model.Count > 0)
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Techer Name</th>
+                <th>Qualification</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var teacher in Model)
+            {
+                <tr>
+                    <td>@teacher.Name</td>
+                    <td>@teacher.Qualification</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <h2>No Teachers ..</h2>
+}

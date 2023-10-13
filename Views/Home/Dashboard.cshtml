@@ -8,64 +8,18 @@
 
 <div class="row">
   <div class="col-6">
-      <p>No Of Teachers: @Model.TotalTeachers</p>
-        <p>No Of Students: @Model.TotalStudents</p>
-        <p>No Of Classes: @Model.TotalClasses</p>
+        @Html.Partial("_Counters",Model)
   </div>
   <div class="col-6">
-
+        
   </div>
 </div>
 <div class="row" style="margin-top:20px;">
     <div class="col-6">
-        @if(Model.Classes != null && Model.Classes.Count > 0)
-        {
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th>Class Name</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var classRoom in Model.Classes)
-                    {
-                        <tr>
-                            <td>@classRoom.Title</td>
-                        </tr>
-                    }
-                </tbody>
-            </table>
-        }
-        else
-        {
-            <h2>No Classes ..</h2>
-        }
+        @Html.Partial("_Classes",Model)
     </div>
     <div class="col-6">
-        @if (Model.Teachers != null && Model.Teachers.Count > 0)
-        {
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th>Techer Name</th>
-                        <th>Qualification</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var teacher in Model.Teachers)
-                    {
-                        <tr>
-                            <td>@teacher.Name</td>
-                            <td>@teacher.Qualification</td>
-                        </tr>
-                    }
-                </tbody>
-            </table>
-        }
-        else
-        {
-            <h2>No Teachers ..</h2>
-        }
+        @Html.Partial("_Teachers",Model.Teachers)
     </div>
 </div>
 

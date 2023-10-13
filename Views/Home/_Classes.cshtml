@@ -1,0 +1,24 @@
+﻿@model SchoolDummy.Models.DashboardModel
+
+@if (Model.Classes != null && Model.Classes.Count > 0)
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Class Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var classRoom in Model.Classes)
+            {
+                <tr>
+                    <td>@classRoom.Title</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <h2>No Classes ..</h2>
+}
