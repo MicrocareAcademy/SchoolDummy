@@ -1,0 +1,35 @@
+﻿@{
+    Layout = "_Layout";
+}
+
+
+<div class="row">
+    <div class="col-6">
+        <form method="post" action="/Student/SaveStudent">
+            <div class="form-group">
+                <label for="StudentName">Student Name</label>
+                <input type="text" class="form-control" 
+                id="StudentName" name="StudentName" placeholder="Enter Student Name">
+            </div>
+            <div class="form-group">
+                <label for="RollNo">Roll No</label>
+                <input type="text" class="form-control"
+                       id="RollNo" name="RollNo" placeholder="Enter Roll No">
+            </div>
+            <div class="form-group">
+                <label for="MobileNo">Mobile No</label>
+                <input type="text" class="form-control"
+                       id="MobileNo" name="MobileNo" placeholder="Enter Mobile No">
+            </div>
+            <div class="form-group">
+                <label for="Class">Class</label>
+                <input type="text" class="form-control"
+                       id="ClassName" name="ClassName" placeholder="Enter Class">
+            </div>
+
+            <button type="submit" class="btn btn-primary">Save Student</button>
+        </form>
+    </div>
+    <div class="col-6">
+    </div>
+</div>
