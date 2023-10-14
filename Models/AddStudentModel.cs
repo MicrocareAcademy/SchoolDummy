@@ -9,5 +9,7 @@
         public string MobileNo { get; set; }
 
         public string ClassName { get; set; }
+
+        public int StudentId { get; set; }
     }
 }

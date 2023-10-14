@@ -45,5 +45,40 @@ namespace SchoolDummy
 
             return RedirectToAction("StudentsList");
         }
+
+
+        public IActionResult EditStudent(int studentId)
+        {
+            var dbContext = new SchoolDBContext();
+
+            //var studentObj = dbContext.Students.Where(p => p.StudentId == studentId).FirstOrDefault();
+            var studentObj = dbContext.Students.FirstOrDefault(p => p.StudentId == studentId);
+
+            var model = new AddStudentModel();
+
+            model.StudentId = studentObj.StudentId;
+            model.StudentName = studentObj.FullName;
+            model.ClassName = studentObj.Class;
+            model.RollNo = studentObj.RollNo;
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public IActionResult UpdateStudent(AddStudentModel model)
+        {
+            var dbContext = new SchoolDBContext();
+
+            var studentObj = dbContext.Students.Where(p => p.StudentId == model.StudentId).FirstOrDefault();
+
+            studentObj.FullName = model.StudentName;
+            studentObj.Class = model.ClassName;
+            studentObj.RollNo = model.RollNo;
+
+            dbContext.Students.Update(studentObj);
+            dbContext.SaveChanges();
+
+            return RedirectToAction("StudentsList");
+        }
     }
 }
