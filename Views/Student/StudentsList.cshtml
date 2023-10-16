@@ -23,11 +23,16 @@
             <tbody>
                 @foreach (var student in Model)
                 {
-                    <tr>
+                    <tr id="@student.StudentId">
                         <td>@student.FullName</td>
                         <td>@student.RollNo</td>
                         <td>@student.Class</td>
-                        <td><a href="@Url.Action("EditStudent","Student",new{studentId = student.StudentId })">Edit</a></td>
+                        <td>
+                            <a href="@Url.Action("EditStudent","Student",new{studentId = student.StudentId })">Edit</a>
+                            |
+                            <a href="javascript:0;" onclick="DeleteStudent(@student.StudentId)">Delete</a>
+                            
+                        </td>
                     </tr>
                 }
 
@@ -39,3 +44,23 @@ else
 {
     <h2>No Students Data ..</h2>
 }
+
+<script type="text/javascript">
+
+    function DeleteStudent(StudentId) { 
+    
+        var url = "https://localhost:7037/Student/DeleteStudent";
+        var parameters = { studentId : StudentId };
+
+        $.post(url, parameters, function (data) {
+
+            alert("Student with Id:" + StudentId + " was deleted");
+
+            $("tr#" + StudentId).remove();
+
+        });
+
+    }
+    
+
+</script>

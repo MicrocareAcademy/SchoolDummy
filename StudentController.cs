@@ -80,5 +80,19 @@ namespace SchoolDummy
 
             return RedirectToAction("StudentsList");
         }
+
+        [HttpPost]
+        public IActionResult DeleteStudent(int studentId)
+        {
+            var dbContext = new SchoolDBContext();
+
+            var studentObj = dbContext.Students.Where(p => p.StudentId == studentId).FirstOrDefault();
+
+
+            dbContext.Students.Remove(studentObj);
+            dbContext.SaveChanges();
+
+            return Json(true);
+        }
     }
 }
