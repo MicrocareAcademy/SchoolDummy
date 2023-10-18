@@ -22,7 +22,9 @@ namespace SchoolDummy
 
             if(userObj == null)
             {
+                ModelState.AddModelError("", "Entered User & Password was incorrect..");
 
+                return View("Login", loginModel);
             }
             else
             {

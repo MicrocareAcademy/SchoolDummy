@@ -9,6 +9,9 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-6">
+
+            <div asp-validation-summary="ModelOnly" class="errorMsg"></div>
+
             <form asp-action="SubmitLogin" asp-controller="Account" method="post">
                 <div class="form-group">
                     <label asp-for="@Model.Username"></label>
