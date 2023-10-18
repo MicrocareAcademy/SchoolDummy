@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "wVK6fizGUxARFuUcnm4x1GXhdkvPdxEkmvuNLrzn1i8=",
+  "Hash": "0tInCziqRC4El2Qt4SAOxaXvfmRW9ET+7mq/m8mxXUg=",
   "Source": "SchoolDummy",
   "BasePath": "_content/SchoolDummy",
   "Mode": "Default",
@@ -49,6 +49,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\AcademyWork\\Academy-Internships\\SchoolDummy\\obj\\Debug\\net7.0\\scopedcss\\projectbundle\\SchoolDummy.bundle.scp.css"
+    },
+    {
+      "Identity": "C:\\AcademyWork\\Academy-Internships\\SchoolDummy\\wwwroot\\css\\Login.css",
+      "SourceId": "SchoolDummy",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\AcademyWork\\Academy-Internships\\SchoolDummy\\wwwroot\\",
+      "BasePath": "_content/SchoolDummy",
+      "RelativePath": "css/Login.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\Login.css"
     },
     {
       "Identity": "C:\\AcademyWork\\Academy-Internships\\SchoolDummy\\wwwroot\\css\\site.css",
