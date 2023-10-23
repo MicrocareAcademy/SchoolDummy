@@ -10,4 +10,6 @@ public partial class Class
     public string Title { get; set; } = null!;
 
     public string? InchargePerson { get; set; }
+
+    public virtual ICollection<Student> Students { get; set; } = new List<Student>();
 }

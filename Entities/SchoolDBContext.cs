@@ -49,10 +49,14 @@ public partial class SchoolDBContext : DbContext
             entity.HasIndex(e => e.RollNo, "UQ__Student__7886D5A18AD7F11D").IsUnique();
 
             entity.Property(e => e.StudentId).HasColumnName("StudentID");
-            entity.Property(e => e.Class).HasMaxLength(20);
+            entity.Property(e => e.ClassId).HasColumnName("ClassID");
             entity.Property(e => e.FullName).HasMaxLength(200);
             entity.Property(e => e.MobileNo).HasMaxLength(20);
             entity.Property(e => e.RollNo).HasMaxLength(10);
+
+            entity.HasOne(d => d.Class).WithMany(p => p.Students)
+                .HasForeignKey(d => d.ClassId)
+                .HasConstraintName("FK_Student_Class");
         });
 
         modelBuilder.Entity<Teacher>(entity =>

@@ -13,5 +13,7 @@ public partial class Student
 
     public string? MobileNo { get; set; }
 
-    public string Class { get; set; } = null!;
+    public int? ClassId { get; set; }
+
+    public virtual Class? Class { get; set; }
 }

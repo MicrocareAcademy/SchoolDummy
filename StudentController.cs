@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using SchoolDummy.Entities;
 using SchoolDummy.Models;
 
@@ -22,7 +23,22 @@ namespace SchoolDummy
 
         public IActionResult AddStudent()
         {
-            return View();
+            var model = new AddStudentModel();
+
+            var dbContext = new SchoolDBContext();
+            var classes = dbContext.Classes.ToList();
+
+            if(model.ClassList == null)
+            {
+                model.ClassList = new List<SelectListItem>();
+            }
+
+            foreach(var classObj in classes)
+            {
+                model.ClassList.Add(new SelectListItem(classObj.Title, classObj.ClassId.ToString()));
+            }
+
+            return View(model);
         }
 
         [HttpPost]
@@ -34,7 +50,7 @@ namespace SchoolDummy
             student.FullName = model.StudentName;
             student.RollNo = model.RollNo;
             student.MobileNo = model.MobileNo;
-            student.Class = model.ClassName;
+            student.ClassId = model.ClassId;
 
             var dbContext = new SchoolDBContext(); // open connection
 
@@ -58,7 +74,7 @@ namespace SchoolDummy
 
             model.StudentId = studentObj.StudentId;
             model.StudentName = studentObj.FullName;
-            model.ClassName = studentObj.Class;
+            model.ClassId = studentObj.ClassId;
             model.RollNo = studentObj.RollNo;
 
             return View(model);
@@ -72,7 +88,7 @@ namespace SchoolDummy
             var studentObj = dbContext.Students.Where(p => p.StudentId == model.StudentId).FirstOrDefault();
 
             studentObj.FullName = model.StudentName;
-            studentObj.Class = model.ClassName;
+            studentObj.ClassId = model.ClassId;
             studentObj.RollNo = model.RollNo;
 
             dbContext.Students.Update(studentObj);
