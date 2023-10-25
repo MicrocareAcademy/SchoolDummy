@@ -12,6 +12,7 @@
         <thead>
             <tr>
                 <th>Class Title</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -19,6 +20,7 @@
             {
                 <tr>
                     <td>@classRoom.Title</td>
+                    <td><a href="@Url.Action("ClassDetails","ClassRoom",new{classId = @classRoom.ClassId})">View</a></td>
                 </tr>
             }
 

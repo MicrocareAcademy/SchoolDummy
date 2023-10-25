@@ -26,7 +26,16 @@
                     <tr id="@student.StudentId">
                         <td>@student.FullName</td>
                         <td>@student.RollNo</td>
-                        <td>@student.Class</td>
+                        <td>
+                            @if(student.Class != null)
+                            {
+                                @student.Class.Title
+                            }
+                            else
+                            {
+                                <span style="color:red;">N/A</span>
+                            }
+                        </td>
                         <td>
                             <a href="@Url.Action("EditStudent","Student",new{studentId = student.StudentId })">Edit</a>
                             |

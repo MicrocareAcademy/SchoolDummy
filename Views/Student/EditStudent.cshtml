@@ -1,4 +1,5 @@
 ﻿@model SchoolDummy.Models.AddStudentModel
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 
 @{
     Layout = "_Layout";
@@ -28,8 +29,7 @@
             </div>
             <div class="form-group">
                 <label for="Class">Class</label>
-                <input type="text" class="form-control"
-                       id="ClassName" name="ClassName" placeholder="Enter Class" value="@Model.ClassName">
+                <select asp-for="@Model.ClassId" asp-items="@Model.ClassList"></select>
             </div>
 
             <input type="hidden" id="StudentId" name="StudentId" value="@Model.StudentId" />

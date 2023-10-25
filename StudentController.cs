@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using SchoolDummy.Entities;
 using SchoolDummy.Models;
 
@@ -15,7 +16,7 @@ namespace SchoolDummy
             //EF generate SQL query
             //select * from Students
             //data from DB will be transformed to List of Objects of Type Student Class
-            var students = dbContext.Students.ToList();
+            var students = dbContext.Students.Include(p=>p.Class).ToList();
 
             //binding list of students to the view
             return View(students);
@@ -25,18 +26,7 @@ namespace SchoolDummy
         {
             var model = new AddStudentModel();
 
-            var dbContext = new SchoolDBContext();
-            var classes = dbContext.Classes.ToList();
-
-            if(model.ClassList == null)
-            {
-                model.ClassList = new List<SelectListItem>();
-            }
-
-            foreach(var classObj in classes)
-            {
-                model.ClassList.Add(new SelectListItem(classObj.Title, classObj.ClassId.ToString()));
-            }
+            model.ClassList = GetClasses();
 
             return View(model);
         }
@@ -71,6 +61,8 @@ namespace SchoolDummy
             var studentObj = dbContext.Students.FirstOrDefault(p => p.StudentId == studentId);
 
             var model = new AddStudentModel();
+
+            model.ClassList = GetClasses();
 
             model.StudentId = studentObj.StudentId;
             model.StudentName = studentObj.FullName;
@@ -109,6 +101,25 @@ namespace SchoolDummy
             dbContext.SaveChanges();
 
             return Json(true);
+        }
+
+        private IList<SelectListItem> GetClasses()
+        {
+            var classesListItems = new List<SelectListItem>();
+
+            var dbContext = new SchoolDBContext();
+            var classes = dbContext.Classes.ToList();
+
+            classesListItems.Add(new SelectListItem("-- Select --", null));
+
+            foreach (var classObj in classes)
+            {
+                var listOption = new SelectListItem(classObj.Title, classObj.ClassId.ToString());
+
+                classesListItems.Add(listOption);
+            }
+
+            return classesListItems;
         }
     }
 }
